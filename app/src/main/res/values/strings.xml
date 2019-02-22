@@ -4,11 +4,8 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="campusbg">1080x1620 300dpi</string>
-    <string name="positive">Submit</string>
-    <string name="negative">Cancel</string>
-    <string name="dialogTitle">Login</string>
-    <string name="dialogTitleReg">Register</string>
-
+    <string name="RegisterSubmit">Submit</string>
+    <string name="LoginSubmit">Submit</string>
 
     <string name="prompt_email">E-mail:</string>
     <string name="prompt_password">Password: </string>
@@ -18,8 +15,4 @@
     <string name="prompt_lname">Last Name</string>
     <string name="prompt_dob">Date of Birth: MM/DD/YYYY</string>
 
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
 </resources>

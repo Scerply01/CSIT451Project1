@@ -1,169 +1,167 @@
 package com.example.project1;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDialogFragment;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.util.Patterns;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import java.lang.*;
+import java.util.Calendar;
+
+public class RegistrationActivity extends AppCompatActivity {
+    //Creating vars to point to views
+    private EditText P_E_T_fname, P_E_T_lname, P_E_T_email, P_E_T_password;
+    private TextView P_T_V_dob;
 
 
-public class RegistrationActivity extends AppCompatDialogFragment {
-    private EditText et_fname, et_lname, et_dob, et_email, et_password;
-    private DialogListener listener;
-    private EditText f_email_box;
+    //Creating Listener used for DatePickerDialog
+    private DatePickerDialog.OnDateSetListener myDateSetListener;
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        //Using Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registration);
 
-        //Inflating layout with "LayoutInflater"
-        LayoutInflater inflater = requireActivity().getLayoutInflater();
+        //creating var
+        Button P_B_submit;
 
-        //Creating view, saves me from writing inflater.inflate over and over
-        View view = inflater.inflate(R.layout.activity_registration, null);
+        //ini vars
+        P_E_T_fname = findViewById(R.id.fname);
+        P_E_T_lname = findViewById(R.id.lname);
+        P_T_V_dob = findViewById(R.id.dob);
+        P_E_T_email = findViewById(R.id.email);
+        P_E_T_password = findViewById(R.id.password);
+        P_B_submit = findViewById(R.id.submitRegisration);
 
-        //test, might not need this
-        f_email_box = (EditText) view.findViewById(R.id.email);
 
+        //When textView is pressed do:
+        P_T_V_dob.setOnClickListener(new View.OnClickListener() {
 
-        //Using Builder.setView for dialog construction. + creating title and action buttons
-        builder.setView(view)
-            .setTitle(R.string.dialogTitleReg)
+            @Override
+            public void onClick(View view) {
+                //Get year, month, day
+                final Calendar cal= Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
 
-            //POSITIVE Action Button, NOTE: This will only run AFTER clicking Submit button
-            .setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    registerAttempt();
+                //use DatePickerDialog class to create alert dialog
+                //DatePickerDialog(Context context, android.R.style.theme, listener, year, month, day)
+                DatePickerDialog dialog = new DatePickerDialog(RegistrationActivity.this,
+                        android.R.style.Theme_Holo, //theme
+                        myDateSetListener,
+                        year,
+                        month,
+                        day);
 
-                    // When the user touches any of the action buttons created with an AlertDialog.Builder, the system dismisses the dialog for you.
-                    // Possible solution: https://stackoverflow.com/questions/40261250/validation-on-edittext-in-alertdialog
-                }
-            })
+                //No need for dialog window background behind calendar
+                //noinspection ConstantConditions
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+        //When date is selected do...
+        myDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                //Incremenent month value by 1, java starts @ 0 for January
+                month += 1;
 
-            //NEGATIVE Action Button
-            .setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //Cancel Button Logic, Will dismiss Dialog
-                }
-            });
+                //Format appearance
+                String date = month +"/" + day +"/" + year;
 
-        //set views to corresponding editText box (fname, lname, dob, email, password)
-        et_email = view.findViewById(R.id.email);
-        //et_password = view.findViewById(R.id.password);
+                //Display value
+                P_T_V_dob.setText(date);
+            }
+        };
+        P_B_submit.setOnClickListener(new OnClickListener() {
 
-        //This command will create our dialog box
-         return builder.create();
+            @Override
+            public void onClick(View view2) {
+                checkEmpty();
+            }
+        });
     }
 
-    private void registerAttempt(){
-        //Vars to store values
-        String email = et_email.getText().toString();
+    @SuppressWarnings("UnnecessaryReturnStatement")
+    private void checkEmpty() {
 
-        //CHANGES************************************************************
+        //Create Vars & Grab Values
+        String fn = P_E_T_fname.getText().toString();
+        String ln = P_E_T_lname.getText().toString();
+        String dob = P_T_V_dob.getText().toString();
+        String mail = P_E_T_email.getText().toString();
+        String pw = P_E_T_password.getText().toString();
+
+        //Resetting Errors
+        P_E_T_fname.setError(null);
+        P_E_T_lname.setError(null);
+        P_T_V_dob.setError(null);
+        P_E_T_email.setError(null);
+        P_E_T_password.setError(null);
+
+        //Set up exit var
         boolean cancel = false;
-        View focusView = null;
 
-        //Check for a valid email address
-        if (TextUtils.isEmpty(email)) {
-            et_email.setError(getString(R.string.error_field_required));
-            focusView= et_email;
+        //Check first name
+        if(TextUtils.isEmpty(fn)){
+            P_E_T_fname.setError("This field is required");
+            cancel=true;
+        } else if (fn.length()<3){
+            P_E_T_fname.setError("Name is less than 3 characters");
+        }
+
+        //Check last name
+        if(TextUtils.isEmpty(ln)){
+            P_E_T_lname.setError("This field is required");
+            cancel=true;
+        } else if (ln.length()<3){
+            P_E_T_lname.setError("Name is less than 3 characters");
+            cancel=true;
+        }
+
+        //Check dob
+        if(TextUtils.isEmpty(dob)){
+            P_T_V_dob.setError("This field is required");
+            cancel=true;
+        }
+
+        //Check email
+        if(TextUtils.isEmpty(mail)){
+            P_E_T_email.setError("This field is required");
+            cancel=true;
+        } else if (!isEmailValid(mail)) {
+            P_E_T_email.setError("E-mail is invalid");
             cancel = true;
         }
 
-        if(cancel) { // cancel==true can just be 'cancel'
-            focusView.requestFocus();
-        }else {
+        //Check password
+        if(TextUtils.isEmpty(pw)){
+            P_E_T_password.setError("This field is required");
+            cancel=true;
+        }else if (pw.length()<3){
+            P_E_T_password.setError("Password is less than 3 characters");
+            cancel=true;
+        }
+        //If data doesn't pass validation then exit method and show errors
+        if (cancel){
             return;
         }
-        //CHANGES END********************************************************
-
-
-
-        //Passing values to host/MainActivity
-        //listener.passValues(email);
-
-    }
-
-    public interface DialogListener{
-        /*
-         * Passing Events Back to the Dialog's Host
-         * Doing this within DialogFragment
-         */
-        void passValues (String email);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        // Override the Fragment.onAttach() method to instantiate the DialogListener
-        super.onAttach(context);
-
-        // Verify host activity implements the callback interface
-        try {
-            // Instantiate DialogListener so we can send events to the host
-            listener = (DialogListener) context; //Ctrl + alt + t will place line inside block of code
-        } catch (ClassCastException e) {
-            // If activity doesn't implement interface, throw exception
-            throw new ClassCastException(context.toString()
-                    + "must implement DialogListener"); //dev site has this as activity but had issues
+        else {
+            finish(); //Exit Activity
         }
+    }
 
+    //check if email is valid
+    private boolean isEmailValid(CharSequence mail) {
+        return Patterns.EMAIL_ADDRESS.matcher(mail).matches();
     }
 }
-
-/*
-    Removed
-    return super.onCreateDialog(savedInstanceState);
-
-
-    Resources:
-    https://developer.android.com/guide/topics/ui/dialogs
-    https://developer.android.com/reference/android/support/v7/app/AppCompatDialog
-    https://developer.android.com/reference/android/support/v7/app/AppCompatDialogFragment
-    https://developer.android.com/guide/topics/ui/dialogs#java <--Dialog Builder Help
-
-
-
-    BACKUP
-
-
-                //POSITIVE Action Button, NOTE: This will only run AFTER clicking Submit button
-            .setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //Vars to store values
-                    String email = et_email.getText().toString();
-
-                    //CHANGES************************************************************
-                    boolean cancel = false;
-                    View focusView = null;
-
-                    //Check for a valid email address
-                    if (TextUtils.isEmpty(email)) {
-                        et_email.setError(getString(R.string.error_field_required));
-                        focusView= et_email;
-                        cancel = true;
-                    }
-
-                    if(cancel) { // cancel==true can just be 'cancel'
-                        focusView.requestFocus();
-                    }else {
-                        return;
-                    }
-                    //CHANGES END********************************************************
-
-
-
-                    //Passing values to host/MainActivity
-                    listener.passValues(email);
-
-                }
-
- */

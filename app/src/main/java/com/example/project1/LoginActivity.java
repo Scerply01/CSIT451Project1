@@ -1,52 +1,73 @@
 package com.example.project1;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDialogFragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
-public class LoginActivity extends AppCompatDialogFragment {
+public class LoginActivity extends AppCompatActivity {
+    //creating vars
+    private EditText P_E_T_email, P_E_T_password;
+
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
-        // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        //creating var
+        Button P_B_loginButton;
 
-        //Inflating layout with LayoutInflater
-        LayoutInflater inflater = requireActivity().getLayoutInflater(); //could also use getActivity
+        //ini vars
+        P_E_T_email = findViewById(R.id.email_login);
+        P_E_T_password = findViewById(R.id.password_login);
+        P_B_loginButton = findViewById(R.id.submitLogin);
+        P_B_loginButton.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                log_in();
+            }
+        });
+    }
 
-        // Builder for dialog construction & passing null as its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.login_form, null))
-            .setTitle(R.string.dialogTitle)
+    @SuppressWarnings("UnnecessaryReturnStatement")
+    private void log_in() {
+        //initializing new vars
+        String email = P_E_T_email.getText().toString();
+        String password = P_E_T_password.getText().toString();
 
-            //Creating Action Buttons
-            .setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //Submit Button Logic, Will dismiss Dialog
-                }
-            })
-            .setNegativeButton(R.string.negative, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //Cancel Button Logic, Will dismiss Dialog
-                }
-            });
-         return builder.create();
+        String predefinedEmail = "demouser@msu.edu";
+        String predefinedPassword = "demo";
+
+        boolean cancel = false;
+
+        //Resetting Errors
+        P_E_T_email.setError(null);
+        P_E_T_password.setError(null);
+
+        if (TextUtils.isEmpty(email)){
+            P_E_T_email.setError("Field is required");
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(password)){
+            P_E_T_password.setError("Field is required");
+            cancel = true;
+        }
+
+        if (cancel){
+            return;
+        }else if(email.equals(predefinedEmail) && password.equals(predefinedPassword)){
+            finish();
+        }else {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Invalid login. Please try again.",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 }
-
-/*
-    Removed
-    return super.onCreateDialog(savedInstanceState);
-
-
-    Resources:
-    https://developer.android.com/guide/topics/ui/dialogs
-    https://developer.android.com/reference/android/support/v7/app/AppCompatDialog
-    https://developer.android.com/reference/android/support/v7/app/AppCompatDialogFragment
-    https://developer.android.com/guide/topics/ui/dialogs#java <--Dialog Builder Help
- */

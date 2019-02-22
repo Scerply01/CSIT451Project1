@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/white"
     tools:context=".MainActivity">
 
     <EditText
@@ -15,7 +14,9 @@
         android:layout_height="wrap_content"
         android:hint="@string/prompt_fname"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:inputType="text"
+        tools:ignore="Autofill"/>
 
     <EditText
         android:id="@+id/lname"
@@ -23,15 +24,18 @@
         android:layout_height="wrap_content"
         android:hint="@string/prompt_lname"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:inputType="text"
+        tools:ignore="Autofill"/>
 
-    <EditText
+    <TextView
         android:id="@+id/dob"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_dob"
-        android:maxLines="1"
-        android:singleLine="true" />
+        android:background="?attr/editTextBackground"
+        android:textColor="?attr/editTextColor"
+        android:textAppearance="?android:attr/textAppearanceMediumInverse"/>
 
     <EditText
         android:id="@+id/email"
@@ -40,7 +44,8 @@
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        tools:ignore="Autofill"/>
 
     <EditText
         android:id="@+id/password"
@@ -53,7 +58,15 @@
         android:imeOptions="actionUnspecified"
         android:inputType="textPassword"
         android:maxLines="1"
-        android:singleLine="true" />
+        android:singleLine="true"
+        tools:ignore="Autofill"/>
+
+    <Button
+        android:id="@+id/submitRegisration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/RegisterSubmit" />
 
 </LinearLayout>
 
