@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.lang.*;
 import java.util.Calendar;
 
@@ -21,6 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText P_E_T_fname, P_E_T_lname, P_E_T_email, P_E_T_password;
     private TextView P_T_V_dob;
 
+    DatabaseHelper mDatabaseHelper;
 
     //Creating Listener used for DatePickerDialog
     private DatePickerDialog.OnDateSetListener myDateSetListener;
@@ -41,6 +44,7 @@ public class RegistrationActivity extends AppCompatActivity {
         P_E_T_password = findViewById(R.id.password);
         P_B_submit = findViewById(R.id.submitRegisration);
 
+        mDatabaseHelper= new DatabaseHelper(this);
 
         //When textView is pressed do:
         P_T_V_dob.setOnClickListener(new View.OnClickListener() {
@@ -156,6 +160,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
         else {
+            AddData(fn, ln, pw, mail, dob);
             finish(); //Exit Activity
         }
     }
@@ -163,5 +168,23 @@ public class RegistrationActivity extends AppCompatActivity {
     //check if email is valid
     private boolean isEmailValid(CharSequence mail) {
         return Patterns.EMAIL_ADDRESS.matcher(mail).matches();
+    }
+
+    //Add values to DB
+    public void AddData(String fN, String lN, String pW, String eM, String doB){
+        String msg1 = "Data Successfully Inserted";
+        String msg2 = "Something went horribly wrong";
+
+        boolean insertData = mDatabaseHelper.addData(fN, lN, pW, eM, doB);
+
+        if(insertData){
+            toastMessage(msg1);
+        }else{
+            toastMessage(msg2);
+        }//*/
+    }
+
+    private void toastMessage (String message){
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
 }

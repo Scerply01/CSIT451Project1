@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Simple Set up with a header TextView and a radioGroup to group our Radio buttons.
+Note Radio Buttons are mutually exclusive, w/o a group only 1 radio button would appear
+Using a radio group allows us to check if any of the sub radiobuttons have been selected-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--Text view header-->
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/Q4_description"
+        android:textSize="35sp" />
+    <!--Button Group-->
+    <RadioGroup
+        android:id="@+id/radio_group4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+        <!--Option 1-->
+        <RadioButton
+            android:id="@+id/radio_g4_bt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text = "@string/Q4_option1"/>
+        <!--Option 2-->
+        <RadioButton
+            android:id="@+id/radio_g4_bt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text = "@string/Q4_option2"/>
+        <!--Option 3-->
+        <RadioButton
+            android:id="@+id/radio_g4_bt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:text = "@string/Q4_option3"/>
+
+    </RadioGroup>
+
+    <!--Confirm Button-->
+    <Button
+        android:id="@+id/btnConfirm4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="@string/Confirm" />
+
+</RelativeLayout>

@@ -15,4 +15,59 @@
     <string name="prompt_lname">Last Name</string>
     <string name="prompt_dob">Date of Birth: MM/DD/YYYY</string>
 
+    <string name="Start">Start</string>
+    <string name="card_game_title">Card Quiz Game</string>
+    <string name="card_game_subtitle">Click Start To Begin...</string>
+    <string name="Rules">Rules</string>
+    <string name="Back">Back</string>
+    <string name="Confirm">Confirm</string>
+
+    <!--Questions-->
+    <string name="Q1_description">What is the number of our course? "CSIT: #"</string>       <!--Multiple Choice: 451, 450, 550: Answer 1-->
+    <string name="Q2_description">Which color is rarest occuring pigment in nature?</string> <!--Multiple Choice: Blue, Red, Purple: Answer 1-->
+    <string name="Q3_description">How many days in a leap year?</string>                     <!--Multiple Choice: 356, 357, 366: Answer 3-->
+    <string name="Q4_description">What color is the true color of water?</string>            <!--Multiple choice: colorless, blue, aqua: Answer 1-->
+    <string name="Q5_description">What color is the sky?</string>                            <!--Multiple answers: Red, Blue, Yellow: Answer 1,2,3-->
+
+    <!--Q1 Answers-->
+    <string name="Q1_option1">451</string>
+    <string name="Q1_option2">450</string>
+    <string name="Q1_option3">550</string>
+
+    <!--Q2 Answers-->
+    <string name="Q2_option1">Blue</string>
+    <string name="Q2_option2">Red</string>
+    <string name="Q2_option3">Purple</string>
+
+    <!--Q3 Answers-->
+    <string name="Q3_option1">356</string>
+    <string name="Q3_option2">357</string>
+    <string name="Q3_option3">366</string>
+
+    <!--Q4 Answers-->
+    <string name="Q4_option1">Colorless</string>
+    <string name="Q4_option2">Blue</string>
+    <string name="Q4_option3">Aqua</string>
+
+    <!--Q5 Answers-->
+    <string name="Q5_option1">Red</string>
+    <string name="Q5_option2">Blue</string>
+    <string name="Q5_option3">Yellow</string>
+
+    <!--Rules-->
+    <string name="rule_explained">Every question is multiple choice except question 5. Question 5 will have multiple answers. </string>
+
+    <!--Score-->
+    <string name="memo1">Click the score button to view score.</string>
+    <string name="memo2">Thanks for playing!</string>
+
+    <!--End-->
+    <string name="end">Quit</string>
+
+    <!--History-->
+    <string name="history">History</string>
+
+    <!--Labels-->
+    <string name="scoreLabel">Score</string>
+    <string name="dateLabel">Date</string>
 </resources>

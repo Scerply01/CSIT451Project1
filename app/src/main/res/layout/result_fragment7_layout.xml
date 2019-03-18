@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Simple XML that uses 1 button to display score and one to end
+the quiz and return to fragment 1. Note that score button had to be
+used as using a FragementStatePagerSuppport style implemention of
+fragments is not a well suited structure for this concept. It
+preloads 2 fragments ahead even if you are not viewing them directly-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--Title TextView-->
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar"
+        android:layout_marginTop="60dp"
+        android:text="@string/memo2"
+        android:layout_centerHorizontal="true"
+        android:textSize="35sp" />
+    <!--Memo TextView-->
+    <TextView
+        android:id="@+id/textTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar"
+        android:layout_marginTop="200dp"
+        android:text="@string/memo1"
+        android:textSize="35sp" />
+    <!--Empty TextView that will be used by fragment 7 to display score-->
+    <TextView
+        android:id="@+id/scorecard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/textTitle2"
+        android:layout_centerHorizontal="true"
+        android:textSize="75sp" />
+    <!--Start Button-->
+    <Button
+        android:id="@+id/btnScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/scorecard"
+        android:text="Score" />
+    <!--Quit Button-->
+    <Button
+        android:id="@+id/btnConfirm6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="@string/end" />
+
+
+</RelativeLayout>
