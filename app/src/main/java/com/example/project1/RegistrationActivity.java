@@ -23,6 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText P_E_T_fname, P_E_T_lname, P_E_T_email, P_E_T_password;
     private TextView P_T_V_dob;
 
+    //Creating obj
     DatabaseHelper mDatabaseHelper;
 
     //Creating Listener used for DatePickerDialog

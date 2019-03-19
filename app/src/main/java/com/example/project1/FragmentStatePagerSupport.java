@@ -18,20 +18,21 @@ public class FragmentStatePagerSupport extends FragmentStatePagerAdapter {
         super(fm);
     }
 
+    //Function to add fragments and titles to arrays
     public void addFragment(Fragment fragment, String title){
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);
     }
 
+    //getting for position of fragment
     @Override
     public Fragment getItem(int i) {
         return mFragmentList.get(i);
     }
 
+    //determines the size of array
     @Override
     public int getCount() {
         return mFragmentList.size();
     }
-
-
 }

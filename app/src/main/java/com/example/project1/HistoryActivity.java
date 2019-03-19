@@ -31,7 +31,8 @@ public class HistoryActivity extends AppCompatActivity {
     public void loadDataInListView(){
         arrayList = mDatabaseHelper_QuizGame.getAllData();
         myAdapter = new MyAdapter(this,arrayList);
-        //In order to display items in the list, call setAdapter(android.widget.ListAdapter) to associate an adapter with the list. https://developer.android.com/reference/android/widget/ListView
+        //In order to display items in the list, call setAdapter(android.widget.ListAdapter)
+        // to associate an adapter with the list. https://developer.android.com/reference/android/widget/ListView
         list.setAdapter(myAdapter);
         //Use notify everytime list is updated https://stackoverflow.com/questions/3669325/notifydatasetchanged-example
         myAdapter.notifyDataSetChanged();

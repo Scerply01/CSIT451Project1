@@ -21,7 +21,6 @@ public class Fragment6 extends Fragment {
     //creating variables
     private Button btConfirm;
     private CheckBox checkBox1, checkBox2, checkBox3;
-    private int point = 1;
 
     @Nullable
     @Override

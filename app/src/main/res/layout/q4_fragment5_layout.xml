@@ -2,7 +2,8 @@
 <!--Simple Set up with a header TextView and a radioGroup to group our Radio buttons.
 Note Radio Buttons are mutually exclusive, w/o a group only 1 radio button would appear
 Using a radio group allows us to check if any of the sub radiobuttons have been selected-->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

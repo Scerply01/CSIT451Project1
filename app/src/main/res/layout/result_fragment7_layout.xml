@@ -56,5 +56,4 @@ preloads 2 fragments ahead even if you are not viewing them directly-->
         android:layout_marginLeft="40dp"
         android:text="@string/end" />
 
-
 </RelativeLayout>

@@ -21,7 +21,6 @@ public class Fragment5 extends Fragment {
     private Button btConfirm;
     private RadioGroup radioGroup;
     private RadioButton radioButton1, radioButton2, radioButton3;
-    private int point = 1;
 
     private static final int RB1_ID = 1;//first radio button id
     private static final int RB2_ID = 2;//second radio button id

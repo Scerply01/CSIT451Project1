@@ -34,8 +34,6 @@ public class Fragment7 extends Fragment {
 
         //Display Score
         textView = (TextView)view.findViewById(R.id.scorecard);
-        //result = ((CardquizActivity)getActivity().get();
-        //textView.setText(result);
 
         btScore.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -51,7 +49,6 @@ public class Fragment7 extends Fragment {
             @Override
             public void onClick(View v2){
                 ((CardquizActivity)getActivity()).setViewPager(0); //send back to master list..
-                //grabScore();
             }
         });
         return view;

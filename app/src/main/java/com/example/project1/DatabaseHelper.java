@@ -10,7 +10,7 @@ import android.util.Log;
 import static android.content.ContentValues.TAG;
 
 /*
- * Used Devloper Documentation https://developer.android.com/training/data-storage/sqlite#java
+ * Used Developer Documentation https://developer.android.com/training/data-storage/sqlite#java
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 

@@ -78,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    //
     public boolean checkCredentials (String email, String password) {
         //Toast messages
         String msg1 = "Success";
@@ -105,9 +104,10 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
 
+    //Create intent with putExtra to pass along email of user signed in
     private void openQuiz(String email){
         Intent intent = new Intent(LoginActivity.this, CardquizActivity.class);
         intent.putExtra("USERNAME", email);
-        LoginActivity.this.startActivity(intent); //this might not work, if not try: startActivity(intent);
+        LoginActivity.this.startActivity(intent);
     }
 }

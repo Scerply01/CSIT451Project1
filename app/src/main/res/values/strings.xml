@@ -27,7 +27,7 @@
     <string name="Q2_description">Which color is rarest occuring pigment in nature?</string> <!--Multiple Choice: Blue, Red, Purple: Answer 1-->
     <string name="Q3_description">How many days in a leap year?</string>                     <!--Multiple Choice: 356, 357, 366: Answer 3-->
     <string name="Q4_description">What color is the true color of water?</string>            <!--Multiple choice: colorless, blue, aqua: Answer 1-->
-    <string name="Q5_description">What color is the sky?</string>                            <!--Multiple answers: Red, Blue, Yellow: Answer 1,2,3-->
+    <string name="Q5_description">What color is the sky?</string>                            <!--Multiple answers: Red, Blue, Yellow: Answer 1,2-->
 
     <!--Q1 Answers-->
     <string name="Q1_option1">451</string>
