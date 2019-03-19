@@ -23,7 +23,7 @@ Using a radio group allows us to check if any of the sub radiobuttons have been 
         android:id="@+id/radio_group2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
+        android:layout_below="@+id/textTitle">
         <!--Option 1-->
         <RadioButton
             android:id="@+id/radio_g2_bt1"
@@ -54,7 +54,7 @@ Using a radio group allows us to check if any of the sub radiobuttons have been 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:text="@string/Confirm" />

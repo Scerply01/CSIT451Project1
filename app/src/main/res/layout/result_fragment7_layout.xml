@@ -15,8 +15,7 @@ preloads 2 fragments ahead even if you are not viewing them directly-->
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/app_bar"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:text="@string/memo2"
         android:layout_centerHorizontal="true"
         android:textSize="35sp" />
@@ -25,16 +24,16 @@ preloads 2 fragments ahead even if you are not viewing them directly-->
         android:id="@+id/textTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/app_bar"
-        android:layout_marginTop="200dp"
+        android:layout_below="@id/textTitle"
+        android:layout_centerHorizontal="true"
         android:text="@string/memo1"
-        android:textSize="35sp" />
+        android:textSize="25sp" />
     <!--Empty TextView that will be used by fragment 7 to display score-->
     <TextView
         android:id="@+id/scorecard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_centerVertical="true"
         android:layout_below="@+id/textTitle2"
         android:layout_centerHorizontal="true"
         android:textSize="75sp" />
@@ -52,7 +51,7 @@ preloads 2 fragments ahead even if you are not viewing them directly-->
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:text="@string/end" />
